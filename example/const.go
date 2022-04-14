@@ -1,0 +1,100 @@
+package example
+
+type ExampleArticleConst int32
+
+type ExampleConceptConst int32
+
+const ARTICLE_TIMESHT_WORKING = ExampleArticleConst(80001)
+const ARTICLE_PAYMENT_SALARY = ExampleArticleConst(80002)
+const ARTICLE_PAYMENT_BONUS = ExampleArticleConst(80003)
+const ARTICLE_PAYMENT_BARTER = ExampleArticleConst(80004)
+const ARTICLE_ALLOWCE_HOFFICE = ExampleArticleConst(80005)
+const ARTICLE_HEALTH_INSBASE = ExampleArticleConst(80006)
+const ARTICLE_SOCIAL_INSBASE = ExampleArticleConst(80007)
+const ARTICLE_HEALTH_INSPAYM = ExampleArticleConst(80008)
+const ARTICLE_SOCIAL_INSPAYM = ExampleArticleConst(80009)
+const ARTICLE_TAXING_ADVBASE = ExampleArticleConst(80010)
+const ARTICLE_TAXING_ADVPAYM = ExampleArticleConst(80011)
+const ARTICLE_INCOME_GROSS = ExampleArticleConst(80012)
+const ARTICLE_INCOME_NETTO = ExampleArticleConst(80013)
+
+const CONCEPT_TIMESHT_WORKING = ExampleConceptConst(80001)
+const CONCEPT_AMOUNT_BASIS = ExampleConceptConst(80002)
+const CONCEPT_AMOUNT_FIXED = ExampleConceptConst(80003)
+const CONCEPT_HEALTH_INSBASE = ExampleConceptConst(80006)
+const CONCEPT_SOCIAL_INSBASE = ExampleConceptConst(80007)
+const CONCEPT_HEALTH_INSPAYM = ExampleConceptConst(80008)
+const CONCEPT_SOCIAL_INSPAYM = ExampleConceptConst(80009)
+const CONCEPT_TAXING_ADVBASE = ExampleConceptConst(80010)
+const CONCEPT_TAXING_ADVPAYM = ExampleConceptConst(80011)
+const CONCEPT_INCOME_GROSS = ExampleConceptConst(80012)
+const CONCEPT_INCOME_NETTO = ExampleConceptConst(80013)
+
+func (tac ExampleArticleConst) Id() int32 {
+	return int32(tac)
+}
+
+func (tac ExampleArticleConst) String() string {
+	switch tac {
+	case ARTICLE_TIMESHT_WORKING:
+		return "ARTICLE_TIMESHT_WORKING"
+	case ARTICLE_PAYMENT_SALARY:
+		return "ARTICLE_PAYMENT_SALARY"
+	case ARTICLE_PAYMENT_BONUS:
+		return "ARTICLE_PAYMENT_BONUS"
+	case ARTICLE_PAYMENT_BARTER:
+		return "ARTICLE_PAYMENT_BARTER"
+	case ARTICLE_ALLOWCE_HOFFICE:
+		return "ARTICLE_ALLOWCE_HOFFICE"
+	case ARTICLE_HEALTH_INSBASE:
+		return "ARTICLE_HEALTH_INSBASE"
+	case ARTICLE_SOCIAL_INSBASE:
+		return "ARTICLE_SOCIAL_INSBASE"
+	case ARTICLE_HEALTH_INSPAYM:
+		return "ARTICLE_HEALTH_INSPAYM"
+	case ARTICLE_SOCIAL_INSPAYM:
+		return "ARTICLE_SOCIAL_INSPAYM"
+	case ARTICLE_TAXING_ADVBASE:
+		return "ARTICLE_TAXING_ADVBASE"
+	case ARTICLE_TAXING_ADVPAYM:
+		return "ARTICLE_TAXING_ADVPAYM"
+	case ARTICLE_INCOME_GROSS:
+		return "ARTICLE_INCOME_GROSS"
+	case ARTICLE_INCOME_NETTO:
+		return "ARTICLE_INCOME_NETTO"
+	}
+	return "ARTICLE_UNKNOWN"
+}
+
+func (tcc ExampleConceptConst) Id() int32 {
+	return int32(tcc)
+}
+
+func (tcc ExampleConceptConst) String() string {
+	switch tcc {
+	case CONCEPT_TIMESHT_WORKING:
+		return "CONCEPT_TIMESHT_WORKING"
+	case CONCEPT_AMOUNT_BASIS   :
+		return "CONCEPT_AMOUNT_BASIS"
+	case CONCEPT_AMOUNT_FIXED   :
+		return "CONCEPT_AMOUNT_FIXED"
+	case CONCEPT_HEALTH_INSBASE :
+		return "CONCEPT_HEALTH_INSBASE"
+	case CONCEPT_SOCIAL_INSBASE :
+		return "CONCEPT_SOCIAL_INSBASE"
+	case CONCEPT_HEALTH_INSPAYM :
+		return "CONCEPT_HEALTH_INSPAYM"
+	case CONCEPT_SOCIAL_INSPAYM :
+		return "CONCEPT_SOCIAL_INSPAYM"
+	case CONCEPT_TAXING_ADVBASE :
+		return "CONCEPT_TAXING_ADVBASE"
+	case CONCEPT_TAXING_ADVPAYM :
+		return "CONCEPT_TAXING_ADVPAYM"
+	case CONCEPT_INCOME_GROSS   :
+		return "CONCEPT_INCOME_GROSS"
+	case CONCEPT_INCOME_NETTO   :
+		return "CONCEPT_INCOME_NETTO"
+	}
+	return "CONCEPT_UNKNOWN"
+}
+
