@@ -1,11 +1,11 @@
 package registry_providers
 
 import (
-	legalios "github.com/mzdyhrave/legaliosgo"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	legalios "github.com/hravemzdy/golegalios"
+	"github.com/hravemzdy/goprocezor/internal/types"
 )
 
-type ResultFunc func (target types.ITermTarget, spec types.IArticleSpec, period legalios.IPeriod, ruleset legalios.IBundleProps, results IBuilderResultList) IBuilderResultList
+type ResultFunc func(target types.ITermTarget, spec types.IArticleSpec, period legalios.IPeriod, ruleset legalios.IBundleProps, results IBuilderResultList) IBuilderResultList
 
 type IConceptSpec interface {
 	Code() types.ConceptCode
@@ -17,7 +17,7 @@ type IConceptSpec interface {
 }
 
 type ConceptSpec struct {
-	code types.ConceptCode
+	code           types.ConceptCode
 	path           []types.ArticleCode
 	resultDelegate ResultFunc
 }
@@ -40,8 +40,8 @@ func (s ConceptSpec) DefaultTargetList(article types.ArticleCode, period legalio
 	con := types.ContractCodeZero()
 	pos := types.PositionCodeZero()
 
-	if len(targets)!=0 {
+	if len(targets) != 0 {
 		return types.ITermTargetList{}
 	}
-	return types.ITermTargetList{ types.NewTermTarget(month, con, pos, vars, article, s.Code()) }
+	return types.ITermTargetList{types.NewTermTarget(month, con, pos, vars, article, s.Code())}
 }

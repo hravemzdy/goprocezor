@@ -1,9 +1,9 @@
 package registry
 
 import (
-	legalios "github.com/mzdyhrave/legaliosgo"
-	providers "github.com/mzdyhrave/procezorgo/internal/registry_providers"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	legalios "github.com/hravemzdy/golegalios"
+	providers "github.com/hravemzdy/goprocezor/internal/registry_providers"
+	"github.com/hravemzdy/goprocezor/internal/types"
 )
 
 type ITermCalcul interface {
@@ -40,5 +40,5 @@ func (t termCalcul) GetResults(period legalios.IPeriod, ruleset legalios.IBundle
 }
 
 func NewTermCalcul(target types.ITermTarget, spec types.IArticleSpec, resultDelegate providers.ResultFunc) ITermCalcul {
-	return &termCalcul{ target: target, spec: spec, resultDelegate: resultDelegate }
+	return &termCalcul{target: target, spec: spec, resultDelegate: resultDelegate}
 }

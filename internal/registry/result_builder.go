@@ -1,10 +1,10 @@
 package registry
 
 import (
-	legalios "github.com/mzdyhrave/legaliosgo"
-	factories "github.com/mzdyhrave/procezorgo/internal/registry_factories"
-	providers "github.com/mzdyhrave/procezorgo/internal/registry_providers"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	legalios "github.com/hravemzdy/golegalios"
+	factories "github.com/hravemzdy/goprocezor/internal/registry_factories"
+	providers "github.com/hravemzdy/goprocezor/internal/registry_providers"
+	"github.com/hravemzdy/goprocezor/internal/types"
 	"sort"
 )
 
@@ -48,7 +48,7 @@ func (f resultBuilder) GetPaths() PathsTermsMap {
 
 func (f *resultBuilder) InitWithPeriod(version types.VersionCode, period legalios.IPeriod, articleFactory factories.IArticleSpecFactory, conceptFactory factories.IConceptSpecFactory) bool {
 	f.version = version
-	f.period  = period
+	f.period = period
 
 	f.articlesModel = articleFactory.GetSpecList(period, version)
 	f.conceptsModel = conceptFactory.GetSpecList(period, version)
@@ -74,8 +74,8 @@ func (f resultBuilder) GetResults(ruleset legalios.IBundleProps,
 }
 
 func NewResultBuilder() IResultBuilder {
-	factory := resultBuilder{ version: types.VersionCodeZero(), period: legalios.PeriodZero(),
-		articlesOrder: make([]types.ArticleTerm, 0), articlesPaths: make(PathsTermsMap) }
+	factory := resultBuilder{version: types.VersionCodeZero(), period: legalios.PeriodZero(),
+		articlesOrder: make([]types.ArticleTerm, 0), articlesPaths: make(PathsTermsMap)}
 
 	return &factory
 }
@@ -151,7 +151,7 @@ func (f resultBuilder) addDefinesToTargets(period legalios.IPeriod, ruleset lega
 	for _, x := range defines {
 		targetCodes := make(types.ITermTargetList, 0)
 		for _, t := range targets {
-			if  t.Article() == x.Code() {
+			if t.Article() == x.Code() {
 				targetCodes = append(targetCodes, t)
 			}
 		}
@@ -293,4 +293,3 @@ func targetCompare(topoOrders types.ArticleTermList, x types.ITermTarget, y type
 	}
 	return cmpInt(xIndex, yIndex)
 }
-

@@ -1,8 +1,8 @@
 package registry_providers
 
 import (
-	legalios "github.com/mzdyhrave/legaliosgo"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	legalios "github.com/hravemzdy/golegalios"
+	"github.com/hravemzdy/goprocezor/internal/types"
 )
 
 type IBuilderResult interface {
@@ -37,35 +37,35 @@ func EvalEmptyResultList(target types.ITermTarget, spec types.IArticleSpec, peri
 }
 
 func NewConceptProvider(code int32) ConceptSpecProvider {
-	return ConceptSpecProvider{ code: types.GetConceptCode(code) }
+	return ConceptSpecProvider{code: types.GetConceptCode(code)}
 }
 
 func NewConceptSpec(code int32) ConceptSpec {
-	return ConceptSpec{ code: types.GetConceptCode(code), path: []types.ArticleCode{}, resultDelegate: EvalEmptyResultList }
+	return ConceptSpec{code: types.GetConceptCode(code), path: []types.ArticleCode{}, resultDelegate: EvalEmptyResultList}
 }
 
 func NewConceptPathSpec(code int32, path []types.ArticleCode) ConceptSpec {
-	return ConceptSpec{ code: types.GetConceptCode(code), path: path, resultDelegate: EvalEmptyResultList }
+	return ConceptSpec{code: types.GetConceptCode(code), path: path, resultDelegate: EvalEmptyResultList}
 }
 
 func NewConceptPathIntSpec(code int32, path []int32) ConceptSpec {
-	return ConceptSpec{ code: types.GetConceptCode(code), path: ConstToPathArray(path), resultDelegate: EvalEmptyResultList }
+	return ConceptSpec{code: types.GetConceptCode(code), path: ConstToPathArray(path), resultDelegate: EvalEmptyResultList}
 }
 
 func NewConceptFuncSpec(code int32, resultFunc ResultFunc) ConceptSpec {
-	return ConceptSpec{ code: types.GetConceptCode(code), path: []types.ArticleCode{}, resultDelegate: resultFunc }
+	return ConceptSpec{code: types.GetConceptCode(code), path: []types.ArticleCode{}, resultDelegate: resultFunc}
 }
 
 func NewConceptPathFuncSpec(code int32, path []types.ArticleCode, resultFunc ResultFunc) ConceptSpec {
-	return ConceptSpec{ code: types.GetConceptCode(code), path: path, resultDelegate: resultFunc }
+	return ConceptSpec{code: types.GetConceptCode(code), path: path, resultDelegate: resultFunc}
 }
 
 func NewConceptPathIntFuncSpec(code int32, path []int32, resultFunc ResultFunc) ConceptSpec {
-	return ConceptSpec{ code: types.GetConceptCode(code), path: ConstToPathArray(path), resultDelegate: resultFunc }
+	return ConceptSpec{code: types.GetConceptCode(code), path: ConstToPathArray(path), resultDelegate: resultFunc}
 }
 
 func NewConceptCodeProvider(code int32) IConceptCodeProvider {
-	return ConceptSpecProvider{ code: types.GetConceptCode(code) }
+	return ConceptSpecProvider{code: types.GetConceptCode(code)}
 }
 
 func ConstToPathArray(_path []int32) []types.ArticleCode {
@@ -75,4 +75,3 @@ func ConstToPathArray(_path []int32) []types.ArticleCode {
 	}
 	return pathArray
 }
-

@@ -1,10 +1,10 @@
 package example
 
 import (
+	legalios "github.com/hravemzdy/golegalios"
+	procezor "github.com/hravemzdy/goprocezor"
+	"github.com/hravemzdy/goprocezor/internal/types"
 	"github.com/kr/pretty"
-	legalios "github.com/mzdyhrave/legaliosgo"
-	procezor "github.com/mzdyhrave/procezorgo"
-	"github.com/mzdyhrave/procezorgo/internal/types"
 	"testing"
 )
 
@@ -81,7 +81,7 @@ func TestServiceProcezorExampleWithSalaryHomeOffice(t *testing.T) {
 		}
 	}
 
-	var testArticles = []int32 { 80001, 80005, 80002, 80006, 80007, 80010, 80012, 80008, 80009, 80011, 80013 }
+	var testArticles = []int32{80001, 80005, 80002, 80006, 80007, 80010, 80012, 80008, 80009, 80011, 80013}
 	var articlesDiff = false
 	if len(restArticles) != len(testArticles) {
 		t.Errorf("Error gerring result from service result len don't match, expected %d; got: %d",
@@ -99,4 +99,3 @@ func TestServiceProcezorExampleWithSalaryHomeOffice(t *testing.T) {
 			pretty.Sprint(testArticles), pretty.Sprint(restArticles))
 	}
 }
-

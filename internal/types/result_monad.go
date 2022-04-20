@@ -1,7 +1,7 @@
 package types
 
 import (
-	legalios "github.com/mzdyhrave/legaliosgo"
+	legalios "github.com/hravemzdy/golegalios"
 )
 
 type ITermResultError interface {
@@ -15,8 +15,8 @@ type ITermResultError interface {
 	ConceptName() string
 	Variant() VariantCode
 	InnerResult() ITermResultError
-	Err()         error
-	Error()       string
+	Err() error
+	Error() string
 	ArticleDescr() string
 	ConceptDescr() string
 }
@@ -70,10 +70,9 @@ func (s SuccessResult) Value() ITermResult {
 }
 
 func NewFailureResult(error ITermResultError) FailureResult {
-	return FailureResult{error }
+	return FailureResult{error}
 }
 
 func NewSuccessResult(result ITermResult, period legalios.IPeriod) SuccessResult {
-	return SuccessResult{result }
+	return SuccessResult{result}
 }
-

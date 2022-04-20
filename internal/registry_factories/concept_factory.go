@@ -1,9 +1,9 @@
 package registry_factories
 
 import (
-	legalios "github.com/mzdyhrave/legaliosgo"
-	providers "github.com/mzdyhrave/procezorgo/internal/registry_providers"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	legalios "github.com/hravemzdy/golegalios"
+	providers "github.com/hravemzdy/goprocezor/internal/registry_providers"
+	"github.com/hravemzdy/goprocezor/internal/types"
 )
 
 type IConceptSpecFactory interface {
@@ -28,10 +28,10 @@ func (p NotFoundConceptProvider) GetSpec(period legalios.IPeriod, version types.
 }
 
 func NewNotFoundConceptProvider() providers.IConceptSpecProvider {
-	return NotFoundConceptProvider{providers.NewConceptCodeProvider(conceptCodeNotfound) }
+	return NotFoundConceptProvider{providers.NewConceptCodeProvider(conceptCodeNotfound)}
 }
 
-type BuildConceptProvidersFunc func (f *ConceptSpecFactory) bool
+type BuildConceptProvidersFunc func(f *ConceptSpecFactory) bool
 
 type ConceptSpecFactory struct {
 	Providers          map[int32]providers.IConceptSpecProvider

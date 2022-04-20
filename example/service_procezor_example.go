@@ -2,44 +2,45 @@ package example
 
 import (
 	"fmt"
-	legalios "github.com/mzdyhrave/legaliosgo"
-	procezor "github.com/mzdyhrave/procezorgo"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	legalios "github.com/hravemzdy/golegalios"
+	procezor "github.com/hravemzdy/goprocezor"
+	"github.com/hravemzdy/goprocezor/internal/types"
 )
 
 const (
 	ARTICLE_DEFAULT_SEQUENS int16 = 0
 )
+
 type ExampleArticleFactory struct {
 	procezor.IArticleSpecFactory
 }
 
-func NewExampleArticleFactory() procezor.IArticleSpecFactory{
-	providersConfig := []procezor.ProviderRecord {
+func NewExampleArticleFactory() procezor.IArticleSpecFactory {
+	providersConfig := []procezor.ProviderRecord{
 		procezor.NewProviderRecord(ARTICLE_TIMESHT_WORKING.Id(), ARTICLE_DEFAULT_SEQUENS, CONCEPT_TIMESHT_WORKING.Id(),
 			[]int32{}),
 		procezor.NewProviderRecord(ARTICLE_PAYMENT_SALARY.Id(), ARTICLE_DEFAULT_SEQUENS, CONCEPT_AMOUNT_BASIS.Id(),
-			[]int32 {
+			[]int32{
 				ARTICLE_INCOME_GROSS.Id(),
 				ARTICLE_HEALTH_INSBASE.Id(),
 				ARTICLE_SOCIAL_INSBASE.Id(),
 				ARTICLE_TAXING_ADVBASE.Id(),
 			}),
 		procezor.NewProviderRecord(ARTICLE_PAYMENT_BONUS.Id(), ARTICLE_DEFAULT_SEQUENS, CONCEPT_AMOUNT_FIXED.Id(),
-			[]int32 {
+			[]int32{
 				ARTICLE_INCOME_GROSS.Id(),
 				ARTICLE_HEALTH_INSBASE.Id(),
 				ARTICLE_SOCIAL_INSBASE.Id(),
 				ARTICLE_TAXING_ADVBASE.Id(),
 			}),
 		procezor.NewProviderRecord(ARTICLE_PAYMENT_BARTER.Id(), ARTICLE_DEFAULT_SEQUENS, CONCEPT_AMOUNT_FIXED.Id(),
-			[]int32 {
+			[]int32{
 				ARTICLE_HEALTH_INSBASE.Id(),
 				ARTICLE_SOCIAL_INSBASE.Id(),
 				ARTICLE_TAXING_ADVBASE.Id(),
 			}),
 		procezor.NewProviderRecord(ARTICLE_ALLOWCE_HOFFICE.Id(), ARTICLE_DEFAULT_SEQUENS, CONCEPT_AMOUNT_FIXED.Id(),
-			[]int32 {
+			[]int32{
 				ARTICLE_INCOME_NETTO.Id(),
 			}),
 		procezor.NewProviderRecord(ARTICLE_HEALTH_INSBASE.Id(), ARTICLE_DEFAULT_SEQUENS, CONCEPT_HEALTH_INSBASE.Id(),
@@ -68,18 +69,18 @@ type ExampleConceptFactory struct {
 
 func NewExampleConceptFactory() procezor.IConceptSpecFactory {
 	return ExampleConceptFactory{procezor.NewConceptSpecFactoryWithProviders(
-		map[int32]procezor.IConceptSpecProvider {
+		map[int32]procezor.IConceptSpecProvider{
 			CONCEPT_TIMESHT_WORKING.Id(): NewTimeshtWorkingConProv(),
-			CONCEPT_AMOUNT_BASIS.Id(): NewAmountBasisConProv(),
-			CONCEPT_AMOUNT_FIXED.Id(): NewAmountFixedConProv(),
-			CONCEPT_HEALTH_INSBASE.Id(): NewHealthInsbaseConProv(),
-			CONCEPT_SOCIAL_INSBASE.Id(): NewSocialInsbaseConProv(),
-			CONCEPT_HEALTH_INSPAYM.Id(): NewHealthInspaymConProv(),
-			CONCEPT_SOCIAL_INSPAYM.Id(): NewSocialInspaymConProv(),
-			CONCEPT_TAXING_ADVBASE.Id(): NewTaxingAdvbaseConProv(),
-			CONCEPT_TAXING_ADVPAYM.Id(): NewTaxingAdvpaymConProv(),
-			CONCEPT_INCOME_GROSS.Id(): NewIncomeGrossConProv(),
-			CONCEPT_INCOME_NETTO.Id(): NewIncomeNettoConProv(),
+			CONCEPT_AMOUNT_BASIS.Id():    NewAmountBasisConProv(),
+			CONCEPT_AMOUNT_FIXED.Id():    NewAmountFixedConProv(),
+			CONCEPT_HEALTH_INSBASE.Id():  NewHealthInsbaseConProv(),
+			CONCEPT_SOCIAL_INSBASE.Id():  NewSocialInsbaseConProv(),
+			CONCEPT_HEALTH_INSPAYM.Id():  NewHealthInspaymConProv(),
+			CONCEPT_SOCIAL_INSPAYM.Id():  NewSocialInspaymConProv(),
+			CONCEPT_TAXING_ADVBASE.Id():  NewTaxingAdvbaseConProv(),
+			CONCEPT_TAXING_ADVPAYM.Id():  NewTaxingAdvpaymConProv(),
+			CONCEPT_INCOME_GROSS.Id():    NewIncomeGrossConProv(),
+			CONCEPT_INCOME_NETTO.Id():    NewIncomeNettoConProv(),
 		}),
 	}
 }
@@ -135,7 +136,7 @@ func NewExamplePositionBuilder() procezor.IProcezorPositionBuilder {
 	return &positionBuilder{}
 }
 
-func NewExampleService() procezor.IProcezorService{
+func NewExampleService() procezor.IProcezorService {
 	const (
 		TestVersion      = TEST_VERSION
 		TestFinalArticle = ARTICLE_INCOME_NETTO
@@ -165,13 +166,13 @@ func GetTargetsWithSalaryHomeOffice(period legalios.IPeriod) types.ITermTargetLi
 	var position = types.GetPositionCode(POSITION_CODE)
 	var variant1 = types.GetVariantCode(VARIANT1_CODE)
 
-	var targets = []types.ITermTarget {
+	var targets = []types.ITermTarget{
 		types.NewTermTarget(montCode, contract, position, variant1,
 			procezor.GetArticleCode(ARTICLE_TIMESHT_WORKING.Id()), procezor.GetConceptCode(CONCEPT_TIMESHT_WORKING.Id())),
 		types.NewTermTarget(montCode, contract, position, variant1,
-			procezor.GetArticleCode(ARTICLE_PAYMENT_SALARY.Id()),procezor.GetConceptCode(CONCEPT_AMOUNT_BASIS.Id())),
+			procezor.GetArticleCode(ARTICLE_PAYMENT_SALARY.Id()), procezor.GetConceptCode(CONCEPT_AMOUNT_BASIS.Id())),
 		types.NewTermTarget(montCode, contract, position, variant1,
-			procezor.GetArticleCode(ARTICLE_ALLOWCE_HOFFICE.Id()),procezor.GetConceptCode(CONCEPT_AMOUNT_FIXED.Id())),
+			procezor.GetArticleCode(ARTICLE_ALLOWCE_HOFFICE.Id()), procezor.GetConceptCode(CONCEPT_AMOUNT_FIXED.Id())),
 	}
 	return targets
 }
@@ -186,7 +187,7 @@ func GetTargetsWithSalaryBonusBarter(period legalios.IPeriod) types.ITermTargetL
 	var position = types.GetPositionCode(POSITION_CODE)
 	var variant1 = types.GetVariantCode(VARIANT1_CODE)
 
-	var targets = []types.ITermTarget {
+	var targets = []types.ITermTarget{
 		types.NewTermTarget(montCode, contract, position, variant1,
 			procezor.GetArticleCode(ARTICLE_TIMESHT_WORKING.Id()), procezor.GetConceptCode(CONCEPT_TIMESHT_WORKING.Id())),
 		types.NewTermTarget(montCode, contract, position, variant1,
@@ -198,4 +199,3 @@ func GetTargetsWithSalaryBonusBarter(period legalios.IPeriod) types.ITermTargetL
 	}
 	return targets
 }
-

@@ -2,7 +2,7 @@ package registry
 
 import (
 	"fmt"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	"github.com/hravemzdy/goprocezor/internal/types"
 	"sort"
 )
 
@@ -20,7 +20,7 @@ type articleEdge struct {
 }
 
 func newArticleEdge(codeStart types.ArticleTerm, codeStops types.ArticleTerm) articleEdge {
-	return 	articleEdge{ start: codeStart, stops: codeStops }
+	return articleEdge{start: codeStart, stops: codeStops}
 }
 
 type mapEdge = map[articleEdge]bool
@@ -83,7 +83,7 @@ func (s *articleEdgeSet) Sort() []articleEdge {
 		itemsSlice = append(itemsSlice, k)
 	}
 	sort.Slice(itemsSlice, func(i, j int) bool {
-		if types.ArticleTermCompare(itemsSlice[i].start, itemsSlice[j].start)==0 {
+		if types.ArticleTermCompare(itemsSlice[i].start, itemsSlice[j].start) == 0 {
 			return types.ArticleTermCompare(itemsSlice[i].stops, itemsSlice[j].stops) < 0
 		}
 		return types.ArticleTermCompare(itemsSlice[i].start, itemsSlice[j].start) < 0
@@ -122,4 +122,3 @@ func (c *articleTermQueue) Size() int {
 func (c *articleTermQueue) Empty() bool {
 	return len(c.queue) == 0
 }
-

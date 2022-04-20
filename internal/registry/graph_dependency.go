@@ -2,8 +2,8 @@ package registry
 
 import (
 	"fmt"
-	providers "github.com/mzdyhrave/procezorgo/internal/registry_providers"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	providers "github.com/hravemzdy/goprocezor/internal/registry_providers"
+	"github.com/hravemzdy/goprocezor/internal/types"
 	"sort"
 )
 
@@ -156,7 +156,7 @@ func mergePaths(articlesModel []types.IArticleSpec, edgeModel []articleEdge, ver
 	sort.Slice(articleDist, func(i, j int) bool {
 		return defineCompare(vertOrder, articleDist[i], articleDist[j]) < 0
 	})
-	return pathCodeList{defs: getArticleDefs(article.Code(), articlesModel), list: articleDist }
+	return pathCodeList{defs: getArticleDefs(article.Code(), articlesModel), list: articleDist}
 }
 
 func mergeVert(articlesModel []types.IArticleSpec, edgeModel []articleEdge, agr []types.IArticleDefine, x types.IArticleDefine) []types.IArticleDefine {
@@ -206,4 +206,3 @@ func defineCompare(topoOrders []types.ArticleTerm, x types.IArticleDefine, y typ
 	}
 	return cmpInt(xIndex, yIndex)
 }
-

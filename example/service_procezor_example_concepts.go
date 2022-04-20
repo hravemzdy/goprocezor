@@ -1,8 +1,8 @@
 package example
 
 import (
-	procezor "github.com/mzdyhrave/procezorgo"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	procezor "github.com/hravemzdy/goprocezor"
+	"github.com/hravemzdy/goprocezor/internal/types"
 )
 
 const TEST_VERSION int32 = 100
@@ -48,7 +48,7 @@ func (t ExampleTermTarget) ConceptDescr() string {
 }
 
 func NewExampleTermTarget(mont types.MonthCode, cont types.ContractCode, post types.PositionCode, vars types.VariantCode, code types.ArticleCode, role types.ConceptCode) ExampleTermTarget {
-	return ExampleTermTarget{ TermTarget: procezor.NewTermTarget(mont, cont, post, vars, code, role) }
+	return ExampleTermTarget{TermTarget: procezor.NewTermTarget(mont, cont, post, vars, code, role)}
 }
 
 type ExampleTermResult struct {
@@ -63,8 +63,6 @@ func (t ExampleTermResult) ConceptDescr() string {
 	return ExampleConceptConst(t.Concept().Value()).String()
 }
 
-
 func NewExampleTermResult(target procezor.ITermTarget, spec procezor.IArticleSpec) ExampleTermResult {
-	return ExampleTermResult{ TermResult: procezor.NewTermResult(target, spec) }
+	return ExampleTermResult{TermResult: procezor.NewTermResult(target, spec)}
 }
-

@@ -1,9 +1,9 @@
 package registry_factories
 
 import (
-	legalios "github.com/mzdyhrave/legaliosgo"
-	providers "github.com/mzdyhrave/procezorgo/internal/registry_providers"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	legalios "github.com/hravemzdy/golegalios"
+	providers "github.com/hravemzdy/goprocezor/internal/registry_providers"
+	"github.com/hravemzdy/goprocezor/internal/types"
 )
 
 const (
@@ -27,7 +27,7 @@ func NotFoundArticleSpec() types.IArticleSpec {
 	return types.NewArticleSpec(ArticleCode, ArticleSeqs, ConceptCode)
 }
 
-type NotFoundArticleProvider struct  {
+type NotFoundArticleProvider struct {
 	providers.IArticleCodeProvider
 }
 
@@ -36,10 +36,10 @@ func (p NotFoundArticleProvider) GetSpec(period legalios.IPeriod, version types.
 }
 
 func NewNotFoundArticleProvider() providers.IArticleSpecProvider {
-	return NotFoundArticleProvider{providers.NewArticleCodeProvider(articleCodeNotfound) }
+	return NotFoundArticleProvider{providers.NewArticleCodeProvider(articleCodeNotfound)}
 }
 
-type BuildArticleProvidersFunc func (f *ArticleSpecFactory) bool
+type BuildArticleProvidersFunc func(f *ArticleSpecFactory) bool
 
 type ProviderRecord struct {
 	Article int32

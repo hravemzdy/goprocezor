@@ -1,8 +1,8 @@
 package registry_providers
 
 import (
-	legalios "github.com/mzdyhrave/legaliosgo"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	legalios "github.com/hravemzdy/golegalios"
+	"github.com/hravemzdy/goprocezor/internal/types"
 )
 
 type IArticleCodeProvider interface {
@@ -23,11 +23,9 @@ func (p ArticleSpecProvider) Code() types.ArticleCode {
 }
 
 func NewArticleProvider(code int32) ArticleSpecProvider {
-	return ArticleSpecProvider{ code: types.GetArticleCode(code) }
+	return ArticleSpecProvider{code: types.GetArticleCode(code)}
 }
 
 func NewArticleCodeProvider(code int32) ArticleSpecProvider {
-	return ArticleSpecProvider{ code: types.GetArticleCode(code) }
+	return ArticleSpecProvider{code: types.GetArticleCode(code)}
 }
-
-

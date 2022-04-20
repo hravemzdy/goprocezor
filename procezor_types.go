@@ -1,11 +1,11 @@
 package goprocezor
 
 import (
-	legalios "github.com/mzdyhrave/legaliosgo"
-	"github.com/mzdyhrave/procezorgo/internal/registry"
-	factories "github.com/mzdyhrave/procezorgo/internal/registry_factories"
-	providers "github.com/mzdyhrave/procezorgo/internal/registry_providers"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	legalios "github.com/hravemzdy/golegalios"
+	"github.com/hravemzdy/goprocezor/internal/registry"
+	factories "github.com/hravemzdy/goprocezor/internal/registry_factories"
+	providers "github.com/hravemzdy/goprocezor/internal/registry_providers"
+	"github.com/hravemzdy/goprocezor/internal/types"
 	"time"
 )
 
@@ -244,17 +244,17 @@ func NewProviderRecord(_article int32, _sequens int16, _concept int32, _sums []i
 type IArticleSpecFactory = factories.IArticleSpecFactory
 
 func NewArticleSpecFactoryWithProviders(providersMap map[int32]IArticleSpecProvider) IArticleSpecFactory {
-	return &factories.ArticleSpecFactory{ BuildProvidersFunc: func (f *factories.ArticleSpecFactory) bool {
-			f.NotFoundSpec = factories.NotFoundArticleSpec()
-			f.NotFoundProvider = factories.NewNotFoundArticleProvider()
-			f.Providers = providersMap
-			return true
-		},
+	return &factories.ArticleSpecFactory{BuildProvidersFunc: func(f *factories.ArticleSpecFactory) bool {
+		f.NotFoundSpec = factories.NotFoundArticleSpec()
+		f.NotFoundProvider = factories.NewNotFoundArticleProvider()
+		f.Providers = providersMap
+		return true
+	},
 	}
 }
 
 func NewArticleSpecFactoryWithRecords(records []factories.ProviderRecord) IArticleSpecFactory {
-	return &factories.ArticleSpecFactory{ BuildProvidersFunc: func (f *factories.ArticleSpecFactory) bool {
+	return &factories.ArticleSpecFactory{BuildProvidersFunc: func(f *factories.ArticleSpecFactory) bool {
 		f.NotFoundSpec = factories.NotFoundArticleSpec()
 		f.NotFoundProvider = factories.NewNotFoundArticleProvider()
 		f.Providers = make(map[int32]IArticleSpecProvider)
@@ -269,12 +269,12 @@ func NewArticleSpecFactoryWithRecords(records []factories.ProviderRecord) IArtic
 type IConceptSpecFactory = factories.IConceptSpecFactory
 
 func NewConceptSpecFactoryWithProviders(providersMap map[int32]IConceptSpecProvider) IConceptSpecFactory {
-	return &factories.ConceptSpecFactory{ BuildProvidersFunc: func (f *factories.ConceptSpecFactory) bool {
-			f.NotFoundSpec = factories.NotFoundConceptSpec()
-			f.NotFoundProvider = factories.NewNotFoundConceptProvider()
-			f.Providers = providersMap
-			return true
-		},
+	return &factories.ConceptSpecFactory{BuildProvidersFunc: func(f *factories.ConceptSpecFactory) bool {
+		f.NotFoundSpec = factories.NotFoundConceptSpec()
+		f.NotFoundProvider = factories.NewNotFoundConceptProvider()
+		f.Providers = providersMap
+		return true
+	},
 	}
 }
 

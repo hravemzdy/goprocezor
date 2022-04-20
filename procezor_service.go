@@ -2,11 +2,11 @@ package goprocezor
 
 import (
 	"fmt"
-	legalios "github.com/mzdyhrave/legaliosgo"
-	"github.com/mzdyhrave/procezorgo/internal/registry"
-	factories "github.com/mzdyhrave/procezorgo/internal/registry_factories"
-	providers "github.com/mzdyhrave/procezorgo/internal/registry_providers"
-	"github.com/mzdyhrave/procezorgo/internal/types"
+	legalios "github.com/hravemzdy/golegalios"
+	"github.com/hravemzdy/goprocezor/internal/registry"
+	factories "github.com/hravemzdy/goprocezor/internal/registry_factories"
+	providers "github.com/hravemzdy/goprocezor/internal/registry_providers"
+	"github.com/hravemzdy/goprocezor/internal/types"
 )
 
 type IProcezorService interface {
@@ -38,7 +38,7 @@ type IProcezorPositionBuilder interface {
 }
 
 type ProcezorService struct {
-	factoryBuilder IProcezorFactoryBuilder
+	factoryBuilder  IProcezorFactoryBuilder
 	contractBuilder IProcezorContractBuilder
 	positionBuilder IProcezorPositionBuilder
 
@@ -47,7 +47,7 @@ type ProcezorService struct {
 
 	resultsBuilder registry.IResultBuilder
 
-	version types.VersionCode
+	version      types.VersionCode
 	calcArticles types.ArticleCodeList
 }
 
@@ -75,7 +75,7 @@ func (s *ProcezorService) InitWithPeriod(period IPeriod) bool {
 	initBuilder := false
 
 	if s.resultsBuilder != nil {
-		initBuilder = s.resultsBuilder.GetPeriod().Equals(period)==false
+		initBuilder = s.resultsBuilder.GetPeriod().Equals(period) == false
 	}
 
 	if initBuilder && s.ArticleFactory != nil && s.ConceptFactory != nil {
@@ -104,7 +104,7 @@ func (s *ProcezorService) BuildFactories() bool {
 func (s ProcezorService) GetResults(period IPeriod, ruleset legalios.IBundleProps, targets types.ITermTargetList) providers.IBuilderResultList {
 	success := s.InitWithPeriod(period)
 
-	if success == false	{
+	if success == false {
 		return make(providers.IBuilderResultList, 0)
 	}
 
@@ -120,14 +120,14 @@ func (s ProcezorService) GetResults(period IPeriod, ruleset legalios.IBundleProp
 }
 
 func (s ProcezorService) GetArticleSpec(code types.ArticleCode, period IPeriod, version types.VersionCode) types.IArticleSpec {
-	if  s.ArticleFactory == nil {
+	if s.ArticleFactory == nil {
 		return nil
 	}
 	return s.ArticleFactory.GetSpec(code, period, version)
 }
 
 func (s ProcezorService) GetConceptSpec(code types.ConceptCode, period IPeriod, version types.VersionCode) providers.IConceptSpec {
-	if  s.ConceptFactory == nil {
+	if s.ConceptFactory == nil {
 		return nil
 	}
 	return s.ConceptFactory.GetSpec(code, period, version)
@@ -136,12 +136,11 @@ func (s ProcezorService) GetConceptSpec(code types.ConceptCode, period IPeriod, 
 func NewProcezorService(version int32, calcArts types.ArticleCodeList,
 	contractSpec IProcezorContractBuilder, positionSpec IProcezorPositionBuilder,
 	serviceSpec IProcezorFactoryBuilder) IProcezorService {
-	service := ProcezorService{ version: types.GetVersionCode(version), calcArticles: calcArts,
-		resultsBuilder: registry.NewResultBuilder(),
-		contractBuilder: contractSpec, positionBuilder: positionSpec, factoryBuilder: serviceSpec }
+	service := ProcezorService{version: types.GetVersionCode(version), calcArticles: calcArts,
+		resultsBuilder:  registry.NewResultBuilder(),
+		contractBuilder: contractSpec, positionBuilder: positionSpec, factoryBuilder: serviceSpec}
 	if service.BuildFactories() == false {
 		println(fmt.Sprintf("Version: %d, build factories failed", version))
 	}
 	return &service
 }
-

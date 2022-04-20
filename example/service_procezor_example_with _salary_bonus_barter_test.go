@@ -1,10 +1,10 @@
 package example
 
 import (
+	legalios "github.com/hravemzdy/golegalios"
+	procezor "github.com/hravemzdy/goprocezor"
+	"github.com/hravemzdy/goprocezor/internal/types"
 	"github.com/kr/pretty"
-	legalios "github.com/mzdyhrave/legaliosgo"
-	procezor "github.com/mzdyhrave/procezorgo"
-	"github.com/mzdyhrave/procezorgo/internal/types"
 	"testing"
 )
 
@@ -80,7 +80,7 @@ func TestServiceProcezorExampleWithSalaryBonusBarter(t *testing.T) {
 			t.Logf("Index: %d, ART: %v, CON: %v, Error: %v", index, articleSymbol, conceptSymbol, errorsValue)
 		}
 	}
-	var testArticles = []int32 { 80001, 80003, 80004, 80002, 80006, 80007, 80010, 80012, 80008, 80009, 80011, 80013 }
+	var testArticles = []int32{80001, 80003, 80004, 80002, 80006, 80007, 80010, 80012, 80008, 80009, 80011, 80013}
 	var articlesDiff = false
 	if len(restArticles) != len(testArticles) {
 		t.Errorf("Error getting result from service result len don't match, expected %d; got: %d",
@@ -98,4 +98,3 @@ func TestServiceProcezorExampleWithSalaryBonusBarter(t *testing.T) {
 			pretty.Sprint(testArticles), pretty.Sprint(restArticles))
 	}
 }
-
