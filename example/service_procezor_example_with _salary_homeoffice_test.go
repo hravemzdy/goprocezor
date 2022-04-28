@@ -70,14 +70,14 @@ func TestServiceProcezorExampleWithSalaryHomeOffice(t *testing.T) {
 			resultValue := res.Value()
 			articleSymbol := resultValue.ArticleDescr()
 			conceptSymbol := resultValue.ConceptDescr()
-			t.Logf("Index: %d, ART: %v, CON: %v", index, articleSymbol, conceptSymbol)
+			t.Logf("Index: %d, CODE: %d, ART: %v, CON: %v", index, resultValue.Article().Value(), articleSymbol, conceptSymbol)
 		}
 		if res.IsFailure() {
 			errorsValue := res.Error()
 			resultValue := res.ResultError()
 			articleSymbol := resultValue.ArticleDescr()
 			conceptSymbol := resultValue.ConceptDescr()
-			t.Logf("Index: %d, ART: %v, CON: %v, Error: %v", index, articleSymbol, conceptSymbol, errorsValue)
+			t.Logf("Index: %d, CODE: %d, ART: %v, CON: %v, Error: %v", index, resultValue.Article().Value(), articleSymbol, conceptSymbol, errorsValue)
 		}
 	}
 

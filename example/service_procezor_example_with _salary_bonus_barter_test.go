@@ -70,14 +70,14 @@ func TestServiceProcezorExampleWithSalaryBonusBarter(t *testing.T) {
 			resultValue := res.Value()
 			articleSymbol := resultValue.ArticleDescr()
 			conceptSymbol := resultValue.ConceptDescr()
-			t.Logf("Index: %d, ART: %v, CON: %v", index, articleSymbol, conceptSymbol)
+			t.Logf("Index: %d, CODE: %d, ART: %v, CON: %v", index, resultValue.Article().Value(), articleSymbol, conceptSymbol)
 		}
 		if res.IsFailure() {
 			errorsValue := res.Error()
 			resultValue := res.ResultError()
 			articleSymbol := resultValue.ArticleDescr()
 			conceptSymbol := resultValue.ConceptDescr()
-			t.Logf("Index: %d, ART: %v, CON: %v, Error: %v", index, articleSymbol, conceptSymbol, errorsValue)
+			t.Logf("Index: %d, CODE: %d, ART: %v, CON: %v, Error: %v", index, resultValue.Article().Value(), articleSymbol, conceptSymbol, errorsValue)
 		}
 	}
 	var testArticles = []int32{80001, 80003, 80004, 80002, 80006, 80007, 80010, 80012, 80008, 80009, 80011, 80013}
